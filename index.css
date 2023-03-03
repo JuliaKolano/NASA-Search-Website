@@ -1,0 +1,46 @@
+body {
+    font-family: "Helvetica", "Arial";
+    background-image: url("Images/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input[type = submit] {
+    background: none;
+    background-size: 100%;
+    border: none;
+}
+input#searchButton {
+    margin-left: -5em;
+    background-image: url("Images/go.png");
+    background-repeat: no-repeat;
+    width: 4em;
+    height: 4em;
+}
+#searchBar {
+    width: 75%;
+    height: 10%;
+    font-size: 150%;
+    border-radius: 25px;
+    padding-left: 2em;
+    /* margin: 2em; */
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(0, 0, 0);
+    background-image: url("Images/search.png");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 0.5em;
+    position: left;
+    background-size: 1em;
+}
+#search::placeholder {
+    color:rgb(138, 137, 137)
+}
+.hide {
+    display: none;
+}
