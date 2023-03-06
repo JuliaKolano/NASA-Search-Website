@@ -1,11 +1,12 @@
+/* Elements */
 body {
     font-family: "Helvetica", "Arial";
     background-image: url("Images/background.jpg");
     background-size: cover;
     background-attachment: fixed;
 }
-main {
-    height: 100vh;
+form {
+    height: 98vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,24 +23,54 @@ input#searchButton {
     width: 4em;
     height: 4em;
 }
+/* IDs */
 #searchBar {
     width: 75%;
-    height: 10%;
+    height: 3em;
     font-size: 150%;
     border-radius: 25px;
     padding-left: 2em;
-    /* margin: 2em; */
     background-color: rgb(255, 255, 255);
     border-color: rgb(0, 0, 0);
     background-image: url("Images/search.png");
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: 0.5em;
-    position: left;
     background-size: 1em;
 }
 #search::placeholder {
     color:rgb(138, 137, 137)
+}
+#nasaLogo:hover, #searchButton:hover{
+    cursor: pointer;
+}
+#imageTarget {
+    position: absolute;
+    top: 10em;
+    margin-left: 1em;
+}
+#prompt {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    position: absolute;
+    top: 5em;
+}
+/* Classes */
+.formToTop {
+    display: flex;
+    align-items: start;
+}
+.buttonToTop {
+    margin-top: 1em;
+}
+.searchBarToTop {
+    margin-top: 0.2em;
+}
+.image {
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    height: 15em;
+    width: auto;
 }
 .hide {
     display: none;

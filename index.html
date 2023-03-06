@@ -9,16 +9,18 @@
     </head>
 
     <body>
-        <header>
-        </header>
-
         <main>
-            <img id = "nasaLogo" src = "Images/nasaLogo.svg" label = "Logo of NASA">
-            <input id = "searchBar" type = "text" placeholder = "Search..." label = "Search Bar">
-            <input id = "searchButton" type = "submit" value = "" label = "Search Button">
+            <form id = "form">
+                <a href = "https://www.nasa.gov/" target = "_blank">
+                    <img id = "nasaLogo" src = "Images/nasaLogo.svg" alt = "Logo of NASA">
+                </a>
+                <input id = "searchBar" type = "text" placeholder = "Search..." name = "Search Bar">
+                <input id = "searchButton" type = "submit" value = "" name = "Search Button">
+                <p id = "prompt" class = "hide">Please input a keyword to search</p>
+            </form>
+            <div id = "imageTarget"></div>
         </main>
-
-        <footer>
-        </footer>
     </body>
 </html>
+<!-- link to website -->
+<!-- http://jk911.brighton.domains/ci527/Assessment/index.html -->
