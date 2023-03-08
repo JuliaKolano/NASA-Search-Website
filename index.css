@@ -55,6 +55,9 @@ input#searchButton {
     position: absolute;
     top: 5em;
 }
+#loading {
+    text-align: center;
+}
 /* Classes */
 .formToTop {
     display: flex;
@@ -67,11 +70,33 @@ input#searchButton {
     margin-top: 0.2em;
 }
 .image {
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
     height: 15em;
     width: auto;
+    border-radius: 8px;
+}
+.image:hover {
+    transform: scale(1.1);
+    border-style: solid;
+    border-width: medium;
+    border-color: rgb(5, 83, 151);
 }
 .hide {
     display: none;
+}
+.blurBackground {
+    backdrop-filter: blur(4px);
+    filter: blur(4px);
+}
+.noBackground {
+    background-image: none;
+}
+@media only screen and (max-width: 600px) {
+    .image {
+    display: block;
+    margin: auto;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    }
 }
