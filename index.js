@@ -16,7 +16,6 @@ window.addEventListener("load", function() {
     loadingStyle = loading.classList,
     detailsStyle = details.classList;
 
-
     form.addEventListener("submit", function(evt) {
         evt.preventDefault();
         promptStyle.add("hide");
@@ -26,7 +25,8 @@ window.addEventListener("load", function() {
         var searchInput = searchBar.value.trim();
         if (searchInput.length > 0) {
             formStyle.add("hide");
-            bodyStyle.add("noBackground")
+            detailsStyle.add("hide");
+            bodyStyle.add("noBackground");
             loadingStyle.remove("hide");
             var xhr = new XMLHttpRequest();
             xhr.addEventListener("load", function() {
@@ -36,6 +36,8 @@ window.addEventListener("load", function() {
                 searchButtonStyle.add("buttonToTop");
                 formStyle.remove("hide");
                 bodyStyle.remove("noBackground");
+                imageTargetStyle.remove("hide");
+                detailsStyle.add("hide");
                 if (xhr.status == 200) {
                     const info = JSON.parse(xhr.responseText),
                         items = info.collection.items;
@@ -58,8 +60,11 @@ window.addEventListener("load", function() {
                         imgStyle.add("image");
                         target.append(img);
                         img.addEventListener("click", function() {
-                            formStyle.add("hide");
+                            while (details.firstChild) {
+                                details.removeChild(details.firstChild);
+                            }
                             imageTargetStyle.add("hide");
+                            detailsStyle.remove("hide");
                             imgStyle.remove("image");
                             imgStyle.add("detailsImage");
                             titleStyle.add("titleParagraph");
@@ -77,7 +82,7 @@ window.addEventListener("load", function() {
                     }
                 }
             })
-            xhr.open("GET", "https://images-api.nasa.gov/search?q=" + searchInput.trim(), true);
+            xhr.open("GET", "https://images-api.nasa.gov/search?q=" + searchInput, true);
             xhr.send();
         } else {
             prompt.innerHTML = "Please input a keyword to search";

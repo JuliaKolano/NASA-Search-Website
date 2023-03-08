@@ -139,7 +139,6 @@ input#searchButton {
     }
     #details {
         position: absolute;
-        top: 0;
         width: 100%;
         text-align: center;
         border-radius: 8px;
