@@ -4,12 +4,16 @@ body {
     background-image: url("Images/background.jpg");
     background-size: cover;
     background-attachment: fixed;
+    margin: 0;
 }
 form {
     height: 98vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+label {
+    display: none;
 }
 input[type = submit] {
     background: none;
@@ -49,6 +53,14 @@ input#searchButton {
     top: 10em;
     margin-left: 1em;
 }
+#details {
+    position: absolute;
+    top: 9em;
+    width: 100%;
+    text-align: start;
+    border-radius: 8px;
+    background-color: rgb(0, 0, 0, 0.8);
+}
 #prompt {
     color: rgb(255, 255, 255);
     font-size: 30px;
@@ -81,6 +93,24 @@ input#searchButton {
     border-style: solid;
     border-width: medium;
     border-color: rgb(5, 83, 151);
+}
+.detailsImage {
+    margin: 1em;
+    height: 25em;
+    width: auto;
+    float: left;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: rgb(141, 141, 141);
+}
+.paragraph {
+    color: rgb(174, 173, 173);
+    font-size: large;
+    line-height: 1.5em;
+}
+.titleParagraph {
+    color: aliceblue;
+    font-size: 2em;
 }
 .hide {
     display: none;

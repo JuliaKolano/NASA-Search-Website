@@ -6,6 +6,7 @@ window.addEventListener("load", function() {
     imageTarget = document.querySelector("#imageTarget"),
     prompt = document.querySelector("#prompt"),
     loading = document.querySelector("#loading"),
+    details = document.querySelector("#details"),
     bodyStyle = body.classList,
     formStyle = form.classList,
     searchBarStyle = searchBar.classList,
@@ -13,6 +14,7 @@ window.addEventListener("load", function() {
     imageTargetStyle = imageTarget.classList,
     promptStyle = prompt.classList,
     loadingStyle = loading.classList,
+    detailsStyle = details.classList;
 
 
     form.addEventListener("submit", function(evt) {
@@ -36,18 +38,38 @@ window.addEventListener("load", function() {
                 bodyStyle.remove("noBackground");
                 if (xhr.status == 200) {
                     const info = JSON.parse(xhr.responseText),
-                    items = info.collection.items;
-                    target = document.querySelector("#imageTarget");
+                        items = info.collection.items;
+                        target = document.querySelector("#imageTarget");
+
+                    console.log(info);
                     for (let i = 0; i < items.length; i++) {
-                        const img = document.createElement("img"),
-                            imgStyle = img.classList;
-                        imgStyle.add("image");
+                        const title = document.createElement("p"),
+                            date = document.createElement("p"),
+                            description = document.createElement("p"),
+                            img = document.createElement("img"),
+                            imgStyle = img.classList,
+                            titleStyle = title.classList,
+                            dateStyle = date.classList,
+                            descriptionStyle = description.classList;
+
+                        title.innerHTML = items[i].data[0].title;
+                        date.innerHTML = "Date: " + items[i].data[0].date_created;
+                        description.innerHTML = "Description: " + items[i].data[0].description;
                         img.src = items[i].links[0].href;
+                        imgStyle.add("image");
                         target.append(img);
                         img.addEventListener("click", function() {
+                            formStyle.add("hide");
                             imageTargetStyle.add("hide");
-                            bodyStyle.add("blurBackground");
-                            
+                            imgStyle.remove("image");
+                            imgStyle.add("detailsImage");
+                            titleStyle.add("titleParagraph");
+                            dateStyle.add("paragraph");
+                            descriptionStyle.add("paragraph");
+                            details.append(img);
+                            details.append(title);
+                            details.append(date);
+                            details.append(description);
                         });
                     }
                     if (imageTarget.childElementCount <= 0) {
@@ -64,7 +86,3 @@ window.addEventListener("load", function() {
         }
     })
 })
-
-// function displayDetails() {
-//     bodyStyle.add("blurBackground");
-// }
