@@ -41,7 +41,6 @@ window.addEventListener("load", function() {
                         items = info.collection.items;
                         target = document.querySelector("#imageTarget");
 
-                    console.log(info);
                     for (let i = 0; i < items.length; i++) {
                         const title = document.createElement("p"),
                             date = document.createElement("p"),

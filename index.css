@@ -70,6 +70,10 @@ input#searchButton {
 #loading {
     text-align: center;
 }
+#loadingImage {
+    height: 8em;
+    width: auto;
+}
 /* Classes */
 .formToTop {
     display: flex;
@@ -107,26 +111,69 @@ input#searchButton {
     color: rgb(174, 173, 173);
     font-size: large;
     line-height: 1.5em;
+    padding: 1em;
 }
 .titleParagraph {
     color: aliceblue;
     font-size: 2em;
+    padding: 1em;
 }
 .hide {
     display: none;
 }
-.blurBackground {
-    backdrop-filter: blur(4px);
-    filter: blur(4px);
-}
 .noBackground {
     background-image: none;
 }
-@media only screen and (max-width: 600px) {
+/* Mobile */
+@media only screen and (max-width: 760px) {
+    /* Elements */
+    input#searchButton {
+        margin-right: 1em;
+    }
+    /* IDs */
+    #searchBar {
+        margin-right: 0.3em;
+    }
+    #imageTarget {
+        margin-left: 0.3em;
+    }
+    #details {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        border-radius: 8px;
+        background-color: rgb(0, 0, 0, 0.8);
+    }
+    /* Classes */
+    .buttonToTop {
+        margin-top: 2.5em;
+    }
     .image {
-    display: block;
-    margin: auto;
-    margin-top: 0.3em;
-    margin-bottom: 0.3em;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        width: 25em;
+        height: auto;
+    }
+    .detailsImage {
+        float: none;
+        margin: 1.2em;
+        height: auto;
+        width: 20em;
+        border-radius: 8px;
+        border-style: solid;
+        border-color: rgb(141, 141, 141);
+    }
+    .paragraph {
+        color: rgb(174, 173, 173);
+        font-size: large;
+        line-height: 1.5em;
+    }
+    .titleParagraph {
+        color: aliceblue;
+        font-size: 2em;
     }
 }
