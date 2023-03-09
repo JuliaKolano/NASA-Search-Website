@@ -68,11 +68,16 @@ input#searchButton {
     top: 5em;
 }
 #loading {
-    text-align: center;
+    position: relative;
+    height: 100vh;
 }
 #loadingImage {
+    position: absolute;
+    top: 35%;
+    left: 45%;
     height: 8em;
     width: auto;
+
 }
 /* Classes */
 .formToTop {
@@ -86,13 +91,15 @@ input#searchButton {
     margin-top: 0.2em;
 }
 .image {
-    margin-left: 0.3em;
-    margin-right: 0.3em;
+    margin: 0.5em;
     height: 15em;
     width: auto;
     border-radius: 8px;
 }
 .image:hover {
+    margin: 0.25em;
+    margin-right: 0.3em;
+    margin-left: 0.3em;
     transform: scale(1.1);
     border-style: solid;
     border-width: medium;
@@ -120,9 +127,6 @@ input#searchButton {
 }
 .hide {
     display: none;
-}
-.noBackground {
-    background-image: none;
 }
 /* Mobile */
 @media only screen and (max-width: 760px) {

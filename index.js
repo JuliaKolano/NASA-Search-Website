@@ -1,4 +1,5 @@
 window.addEventListener("load", function() {
+    // Global variables
     const body = document.querySelector("#body")
     form = document.querySelector("#form"),
     searchBar = document.querySelector("#searchBar"),
@@ -16,50 +17,60 @@ window.addEventListener("load", function() {
     loadingStyle = loading.classList,
     detailsStyle = details.classList;
 
+    // Submit button pressed
     form.addEventListener("submit", function(evt) {
         evt.preventDefault();
         promptStyle.add("hide");
+        // Delete previous results
         while (imageTarget.firstChild) {
             imageTarget.removeChild(imageTarget.firstChild);
         }
-        var searchInput = searchBar.value.trim();
+        const searchInput = searchBar.value.trim();
+        // User input validation
         if (searchInput.length > 0) {
             formStyle.add("hide");
             detailsStyle.add("hide");
-            bodyStyle.add("noBackground");
             loadingStyle.remove("hide");
-            var xhr = new XMLHttpRequest();
+            let xhr = new XMLHttpRequest();
             xhr.addEventListener("load", function() {
+                // Display loading screen
                 loadingStyle.add("hide");
                 formStyle.add("formToTop");
                 searchBarStyle.add("searchBarToTop");
                 searchButtonStyle.add("buttonToTop");
                 formStyle.remove("hide");
-                bodyStyle.remove("noBackground");
                 imageTargetStyle.remove("hide");
                 detailsStyle.add("hide");
+                // Successfull request
                 if (xhr.status == 200) {
                     const info = JSON.parse(xhr.responseText),
                         items = info.collection.items;
                         target = document.querySelector("#imageTarget");
-
+                    // Add images to the screen
                     for (let i = 0; i < items.length; i++) {
+                        // Create all elements
                         const title = document.createElement("p"),
                             date = document.createElement("p"),
                             description = document.createElement("p"),
                             img = document.createElement("img"),
+                            imageLinks = items[i].links,
                             imgStyle = img.classList,
                             titleStyle = title.classList,
                             dateStyle = date.classList,
                             descriptionStyle = description.classList;
-
-                        title.innerHTML = items[i].data[0].title;
-                        date.innerHTML = "Date: " + items[i].data[0].date_created;
-                        description.innerHTML = "Description: " + items[i].data[0].description;
-                        img.src = items[i].links[0].href;
-                        imgStyle.add("image");
-                        target.append(img);
+                        // Check if the image links are valid
+                        if (imageLinks != undefined) {
+                            // Get info about images
+                            title.innerHTML = items[i].data[0].title;
+                            date.innerHTML = "Date: " + (items[i].data[0].date_created).substring(0, 10);
+                            description.innerHTML = "Description: " + items[i].data[0].description;
+                            img.src = items[i].links[0].href;
+                            imgStyle.add("image");
+                            target.append(img);
+                        }
+                        // After clicking on a generated image
                         img.addEventListener("click", function() {
+                            //hide all other elements
                             while (details.firstChild) {
                                 details.removeChild(details.firstChild);
                             }
@@ -70,23 +81,28 @@ window.addEventListener("load", function() {
                             titleStyle.add("titleParagraph");
                             dateStyle.add("paragraph");
                             descriptionStyle.add("paragraph");
+                            //Add image info to the screen
                             details.append(img);
                             details.append(title);
                             details.append(date);
                             details.append(description);
                         });
                     }
+                    // No images match the search input
                     if (imageTarget.childElementCount <= 0) {
                         prompt.innerHTML = "No results";
                         promptStyle.remove("hide");
                     }
                 }
             })
+            // Send the request
             xhr.open("GET", "https://images-api.nasa.gov/search?q=" + searchInput, true);
             xhr.send();
+        // No user input
         } else {
             prompt.innerHTML = "Please input a keyword to search";
             promptStyle.remove("hide");
+            detailsStyle.add("hide");
         }
     })
 })
