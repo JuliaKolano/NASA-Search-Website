@@ -141,6 +141,10 @@ input#searchButton {
     #imageTarget {
         margin-left: 0.3em;
     }
+    #loadingImage {
+        left: 40%;
+    
+    }
     #details {
         position: absolute;
         width: 100%;
@@ -174,9 +178,11 @@ input#searchButton {
         color: rgb(174, 173, 173);
         font-size: large;
         line-height: 1.5em;
+        word-break: break-all;
     }
     .titleParagraph {
         color: aliceblue;
         font-size: 2em;
+        word-break: break-all;
     }
 }
