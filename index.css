@@ -15,6 +15,10 @@ form {
 label {
     display: none;
 }
+a {
+    color: aliceblue;
+    display: block;
+}
 input[type = submit] {
     background: none;
     background-size: 100%;
@@ -79,6 +83,13 @@ input#searchButton {
     width: auto;
 
 }
+#references {
+    color: aliceblue;
+    position: absolute;
+    padding: 0.5em;
+    bottom: 0%;
+    left: 0%;
+}
 /* Classes */
 .formToTop {
     display: flex;
@@ -142,7 +153,7 @@ input#searchButton {
         margin-left: 0.3em;
     }
     #loadingImage {
-        left: 40%;
+        left: 35%;
     
     }
     #details {

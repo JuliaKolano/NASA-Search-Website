@@ -8,6 +8,8 @@ window.addEventListener("load", function() {
     prompt = document.querySelector("#prompt"),
     loading = document.querySelector("#loading"),
     details = document.querySelector("#details"),
+    references = document.querySelector("#references"),
+    heading = document.querySelector("#heading"),
     bodyStyle = body.classList,
     formStyle = form.classList,
     searchBarStyle = searchBar.classList,
@@ -15,8 +17,12 @@ window.addEventListener("load", function() {
     imageTargetStyle = imageTarget.classList,
     promptStyle = prompt.classList,
     loadingStyle = loading.classList,
-    detailsStyle = details.classList;
+    detailsStyle = details.classList,
+    referencesStyle = references.classList,
+    headingStyle = heading.classList;
 
+    headingStyle.add("hide");
+    searchButton.value = "";
     // Submit button pressed
     form.addEventListener("submit", function(evt) {
         evt.preventDefault();
@@ -28,12 +34,13 @@ window.addEventListener("load", function() {
         const searchInput = searchBar.value.trim();
         // User input validation
         if (searchInput.length > 0) {
+            // Display loading screen
             formStyle.add("hide");
             detailsStyle.add("hide");
+            referencesStyle.add("hide");
             loadingStyle.remove("hide");
             let xhr = new XMLHttpRequest();
             xhr.addEventListener("load", function() {
-                // Display loading screen
                 loadingStyle.add("hide");
                 formStyle.add("formToTop");
                 searchBarStyle.add("searchBarToTop");
@@ -61,6 +68,11 @@ window.addEventListener("load", function() {
                         // Check if the image links are valid
                         if (imageLinks != undefined) {
                             // Get info about images
+                            // Normally innerHTML should not be used due to a security issue
+                            // however in this case NASA is a reputible source so there shouldn't
+                            // be any malicious code exeuted. And for some of the images the links
+                            // inside of the description look better using innerHTML rather than
+                            // using the textContent attribute
                             title.innerHTML = items[i].data[0].title;
                             date.innerHTML = "Date: " + (items[i].data[0].date_created).substring(0, 10);
                             description.innerHTML = "Description: " + items[i].data[0].description;
